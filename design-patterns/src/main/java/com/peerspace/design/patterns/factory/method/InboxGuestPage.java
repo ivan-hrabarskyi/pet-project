@@ -1,9 +1,9 @@
-package com.peerspace.design_patterns.factory_method;
+package com.peerspace.design.patterns.factory.method;
 
 public class InboxGuestPage extends InboxPage {
 
     @Override
     SenderName getName() {
-        return new GuestName();
+        return new HostName();
     }
 }
