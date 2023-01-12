@@ -1,7 +1,4 @@
-package com.peerspace.design.patterns;
-
-import com.peerspace.design.patterns.factory.method.SenderNameFactory;
-import com.peerspace.design.patterns.factory.method.UserType;
+package com.peerspace.design.patterns.factory.method;
 
 public class Main {
 
