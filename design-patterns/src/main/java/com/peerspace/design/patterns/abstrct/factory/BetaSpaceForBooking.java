@@ -1,6 +1,6 @@
 package com.peerspace.design.patterns.abstrct.factory;
 
-public class BetaSpaceForBooking implements SpaceForBooking {
+public class BetaSpaceForBooking implements Space {
 
     @Override
     public String spaceId() {

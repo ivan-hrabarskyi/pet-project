@@ -1,15 +1,17 @@
 package com.peerspace.design.patterns.abstrct.factory;
 
-public class AlphaFactory implements SpaceFactory {
+public class AlphaFactory extends SpaceFactory {
 
     @Override
-    public SpaceForBooking getSpaceForBooking() {
-        return new AlphaSpaceForBooking();
+    Space getSpace(SpaceType spaceType) {
+        switch (spaceType) {
+            case BOOKING -> {
+                return new AlphaSpaceForBooking();
+            }
+            case COMPLETE_PROFILE -> {
+                return new AlphaSpaceForCompleteProfile();
+            }
+            default -> throw new RuntimeException("Space Type not found!");
+        }
     }
-
-    @Override
-    public SpaceForCompleteProfile getSpaceForCompleteProfile() {
-        return new AlphaSpaceForCompleteProfile();
-    }
-
 }

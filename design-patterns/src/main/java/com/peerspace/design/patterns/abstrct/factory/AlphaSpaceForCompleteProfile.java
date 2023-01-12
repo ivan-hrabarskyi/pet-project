@@ -1,6 +1,6 @@
 package com.peerspace.design.patterns.abstrct.factory;
 
-public class AlphaSpaceForCompleteProfile implements SpaceForCompleteProfile {
+public class AlphaSpaceForCompleteProfile implements Space {
 
     @Override
     public String spaceId() {

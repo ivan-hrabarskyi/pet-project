@@ -1,8 +1,7 @@
 package com.peerspace.design.patterns.abstrct.factory;
 
-public interface SpaceFactory {
+public abstract class SpaceFactory {
 
-    SpaceForBooking getSpaceForBooking();
-    SpaceForCompleteProfile getSpaceForCompleteProfile();
+    abstract Space getSpace(SpaceType spaceType);
 
 }
