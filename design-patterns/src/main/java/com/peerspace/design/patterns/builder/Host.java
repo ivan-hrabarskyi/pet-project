@@ -12,13 +12,13 @@ public class Host {
 
     private int numberOfListings;
 
-    public Host(String username, String password, String firstName, String lastName, String phoneNumber) {
+    public Host(String username, String password, String firstName, String lastName, String phoneNumber, int numberOfListings) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
-        this.numberOfListings = 0;
+        this.numberOfListings = numberOfListings;
     }
 
     public String getUsername() {

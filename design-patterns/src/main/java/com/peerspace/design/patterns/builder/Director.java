@@ -9,6 +9,7 @@ public class Director {
             builder.withFirstName("Ivan");
             builder.withLastName("Host");
             builder.withPhoneNumber("+380951234567");
+            ((HostBuilder) builder).withNumberOfListings(3);
         }
         else {
             builder.withUsername("ivan.hrabarskyiguest@gmail.com");
@@ -26,6 +27,7 @@ public class Director {
             builder.withFirstName("John");
             builder.withLastName("Tyree");
             builder.withPhoneNumber("+380959205283");
+            ((HostBuilder) builder).withNumberOfListings(0);
         }
         else {
             builder.withUsername("grabarskiy02@gmail.com");

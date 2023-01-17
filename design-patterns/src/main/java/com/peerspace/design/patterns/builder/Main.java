@@ -10,8 +10,7 @@ public class Main {
         director.createUserForLogIn(hostBuilder);
 
         Host host = hostBuilder.build();
-        host.setNumberOfListings(3);
-        System.out.println(host.getInfoAboutTheUser());
+        System.out.println(host.getInfoAboutTheUser() + '\n');
 
         GuestBuilder guestBuilder = new GuestBuilder();
         director.createUserForSignUp(guestBuilder);
