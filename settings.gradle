@@ -1,3 +1,4 @@
 rootProject.name = 'pet-project'
 include 'design-patterns'
+include 'spring-feign'
 
