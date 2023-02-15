@@ -1,8 +1,8 @@
 package com.peerspace.spring.feign.client.targets;
 
 
+import com.peerspace.spring.feign.AuthTokenCache;
 import com.peerspace.spring.feign.domain.model.User;
-import com.peerspace.spring.feign.client.AuthClient;
 import feign.Request;
 import feign.RequestTemplate;
 import feign.Target;
@@ -41,8 +41,8 @@ public class DynamicAuthTokenTarget<T> implements Target<T> {
             input.target(url);
         }
 
-        var response = AuthClient.withoutUser().createdToken(user);
-        var token = response.getToken();
+        var token = AuthTokenCache.getToken(user);
+
         input.header("Cookie", "token=" + token);
 
         return input.request();
