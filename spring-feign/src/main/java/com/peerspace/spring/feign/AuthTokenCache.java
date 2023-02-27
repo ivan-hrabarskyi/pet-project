@@ -10,10 +10,6 @@ import java.util.Map;
 public class AuthTokenCache {
     public static Map<User, TokenInfo> userTokens;
 
-    private AuthTokenCache(User user) {
-        addUser(user);
-    }
-
     public static String getToken(User user) {
         if (userTokens == null) {
             userTokens = new HashMap<>();
