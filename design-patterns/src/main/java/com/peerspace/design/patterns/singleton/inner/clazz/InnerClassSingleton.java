@@ -2,7 +2,7 @@ package com.peerspace.design.patterns.singleton.inner.clazz;
 
 public class InnerClassSingleton {
 
-    String value;
+    private String value;
 
     private InnerClassSingleton() {}
 
