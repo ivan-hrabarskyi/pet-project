@@ -1,6 +1,7 @@
 package com.peerspace.design.patterns.singleton;
 
 import com.peerspace.design.patterns.singleton.enam.EnumSingleton;
+import com.peerspace.design.patterns.singleton.inner.clazz.InnerClassSingleton;
 import com.peerspace.design.patterns.singleton.thread.safe.Singleton;
 
 public class Main {
@@ -21,7 +22,13 @@ public class Main {
         System.out.println("enumSingleton1 = " + enumSingletonOne);
         EnumSingleton.getInstance().setValue("other value");
         var enumSingletonTwo = EnumSingleton.getInstance().getValue();
-        System.out.println("enumSingleton2 = " + enumSingletonTwo);
+        System.out.println("enumSingleton2 = " + enumSingletonTwo + '\n');
+
+        // Inner Class Singleton
+
+        InnerClassSingleton.getInstance().setValue("singleton value");
+        System.out.println("InnerClassSingleton.getInstance().getValue() = " + InnerClassSingleton.getInstance().getValue());
+
     }
 
 }

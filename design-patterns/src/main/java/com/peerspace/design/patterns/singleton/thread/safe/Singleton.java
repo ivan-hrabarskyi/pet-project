@@ -17,7 +17,6 @@ public class Singleton {
                 localRef = instance;
                 if (localRef == null) {
                     instance = localRef = new Singleton(value);
-
                 }
             }
         }
