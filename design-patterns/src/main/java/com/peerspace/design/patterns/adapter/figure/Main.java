@@ -14,7 +14,7 @@ public class Main {
         SquarePegAdapter largePegAdapter = new SquarePegAdapter(largePeg);
 
         System.out.println("Square peg with radius " + smallPegAdapter.getRadius() + ((roundHole.fits(smallPegAdapter)) ? " fits" : " does not fit") + " round hole with radius " + roundHole.getRadius());
-        System.out.println("Square peg with radius " + smallPegAdapter.getRadius() + ((roundHole.fits(largePegAdapter)) ? " fits" : " does not fit") + " round hole with radius " + roundHole.getRadius());
+        System.out.println("Square peg with radius " + largePegAdapter.getRadius() + ((roundHole.fits(largePegAdapter)) ? " fits" : " does not fit") + " round hole with radius " + roundHole.getRadius());
     }
 
 }
