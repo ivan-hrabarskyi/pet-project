@@ -1,4 +1,4 @@
-package com.peerspace.design.patterns.adapter;
+package com.peerspace.design.patterns.adapter.file;
 
 public enum TextFileFormat {
 
