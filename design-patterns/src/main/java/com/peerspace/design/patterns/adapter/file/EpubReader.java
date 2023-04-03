@@ -1,0 +1,15 @@
+package com.peerspace.design.patterns.adapter.file;
+
+public class EpubReader implements AdvancedTextReader {
+
+    @Override
+    public void openPdfFile(String fileName) {
+        System.out.println("Cannot open PDF file");
+    }
+
+    @Override
+    public void openEpubFile(String fileName) {
+        System.out.println("Opened Epub file with name: " + fileName);
+    }
+
+}
