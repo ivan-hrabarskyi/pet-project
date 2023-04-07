@@ -9,7 +9,7 @@ public abstract class NotifierDecorator implements User {
     }
 
     public void sendMessage(String message) {
-        System.out.println("\"" + message + "\"" + " sent to " + userType());
+        System.out.println("\"" + message + "\"" + " sent to " + user.userType());
     }
 
 }
