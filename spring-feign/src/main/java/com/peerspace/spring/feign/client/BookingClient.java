@@ -1,6 +1,5 @@
 package com.peerspace.spring.feign.client;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.peerspace.spring.feign.client.targets.DynamicAuthTokenTarget;
 import com.peerspace.spring.feign.client.base.IBookingClient;
 import com.peerspace.spring.feign.client.targets.StaticAuthTokenTarget;
@@ -11,11 +10,13 @@ import com.peerspace.spring.feign.client.response.BookingId;
 import com.peerspace.spring.feign.client.response.CreateBookingResponse;
 import com.peerspace.spring.feign.client.response.GetBookingResponse;
 import com.peerspace.spring.feign.client.response.UpdateBookingResponse;
+import com.peerspace.spring.feign.helpers.JsonConfiguration;
+import com.peerspace.spring.feign.helpers.JsonParser;
 import feign.Feign;
 import feign.Response;
-import feign.form.FormEncoder;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -38,29 +39,23 @@ public class BookingClient {
     }
 
     private BookingClient() {
-        ObjectMapper objectMapper = new ObjectMapper();
-
         this.bookingClient = Feign.builder()
-                .encoder(new FormEncoder(new JacksonEncoder(objectMapper)))
-                .decoder(new JacksonDecoder(objectMapper))
+                .encoder(new JacksonEncoder(JsonConfiguration.getStrictJsonMapper()))
+                .decoder(new JacksonDecoder(JsonConfiguration.getStrictJsonMapper()))
                 .target(IBookingClient.class, "https://restful-booker.herokuapp.com");
     }
 
     private BookingClient(String token) {
-        ObjectMapper objectMapper = new ObjectMapper();
-
         this.bookingClient = Feign.builder()
-                .encoder(new FormEncoder(new JacksonEncoder(objectMapper)))
-                .decoder(new JacksonDecoder(objectMapper))
+                .encoder(new JacksonEncoder(JsonConfiguration.getStrictJsonMapper()))
+                .decoder(new JacksonDecoder(JsonConfiguration.getStrictJsonMapper()))
                 .target(new StaticAuthTokenTarget<>(IBookingClient.class, token));
     }
 
     private BookingClient(User user) {
-        ObjectMapper objectMapper = new ObjectMapper();
-
         this.bookingClient = Feign.builder()
-                .encoder(new FormEncoder(new JacksonEncoder(objectMapper)))
-                .decoder(new JacksonDecoder(objectMapper))
+                .encoder(new JacksonEncoder(JsonConfiguration.getStrictJsonMapper()))
+                .decoder(new JacksonDecoder(JsonConfiguration.getStrictJsonMapper()))
                 .target(new DynamicAuthTokenTarget<>(IBookingClient.class, user));
     }
 
@@ -77,9 +72,14 @@ public class BookingClient {
         return bookingClient.getBooking(bookingId);
     }
 
-    public UpdateBookingResponse updateBooking(int bookingId, UpdateBookingRequestBody body) {
+    public Response updateBookingResponse(int bookingId, UpdateBookingRequestBody body) {
         log.info("Update booking with " + bookingId + " id");
         return bookingClient.updateBooking(bookingId, body);
+    }
+
+    @SneakyThrows
+    public UpdateBookingResponse updateBooking(int bookingId, UpdateBookingRequestBody body) {
+        return JsonParser.parseFromInputStream(updateBookingResponse(bookingId, body).body().asInputStream(), UpdateBookingResponse.class);
     }
 
     public Response deleteBooking(int bookingId) {

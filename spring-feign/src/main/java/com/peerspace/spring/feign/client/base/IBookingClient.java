@@ -29,7 +29,7 @@ public interface IBookingClient {
     GetBookingResponse getBooking(@Param("bookingId") int bookingId);
 
     @RequestLine("PUT /booking/{bookingId}")
-    UpdateBookingResponse updateBooking(@Param("bookingId") int bookingId, UpdateBookingRequestBody requestBody);
+    Response updateBooking(@Param("bookingId") int bookingId, UpdateBookingRequestBody requestBody);
 
     @RequestLine("DELETE /booking/{bookingId}")
     Response deleteBooking(@Param("bookingId") int bookingId);
